@@ -4,7 +4,7 @@ class Animal:
     def speak(self):
         return "Some sound"
 
-    def move(self): 
+    def move(self, inp): 
         return "Animal is moving"
 
 class Dog(Animal):
@@ -13,19 +13,26 @@ class Dog(Animal):
         return "Bark"
 
 class Puppy(Dog):
+    def __init__(self):
+        self.attribute = "something"
     # OVERRIDE
     def speak(self): # type: ignore
         # print(super().speak())
         return "Yip"
     # OVERRIDE
     def move(self): 
-        print(super().move()) # this will call Dog move(), but since Dog does not have move(), it will find and call Animal move() 
         return "Puppy is moving"
 
-p = Puppy()
-print(p.speak())
-print(p.move())
+    @property 
+    def some_prop(self):
+        return 5
 
+p = Puppy()
+# print(p.speak())
+print(isinstance(Dog, Animal))
+# print(p.move())
+# print(Puppy.some_prop.fget.__name__)
+# print(Puppy.attribute.fget.__name__)
 
 
 
